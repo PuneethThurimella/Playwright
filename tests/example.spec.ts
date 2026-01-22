@@ -16,3 +16,15 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+
+test('login API validation', async ({ request }) => {
+  const response = await request.post('/api/login', {
+    data: {
+      username: 'admin',
+      password: 'admin123'
+    }
+  });
+  expect(response.status()).toBe(200);
+  const body = await response.json();
+  expect(body.userId).toBeGreaterThan(0);
+});
