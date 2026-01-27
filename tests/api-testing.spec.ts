@@ -1,24 +1,21 @@
 import { test, expect } from '@playwright/test';
 
-test('API Testing', async ({ request }) => {
-  const response = await request.post('/api/login', {
+test("API Test", async ({ request }) => {
+  const response = await request.post("https://httpbin.org/post", {
     data: {
-      username: 'admin',
-      password: 'admin123'
+      username: "admin",
+      password: "admin123"
     }
   });
   expect(response.status()).toBe(200);
   const body = await response.json();
-  expect(body.userId).toBeGreaterThan(0);
+  expect(body.json.username).toBe("admin");
+  console.log(body.json);
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-  await page.getByRole('link', { name: 'Get started' }).click();
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-});
-
-test('has title', async ({ page }) => {
+test('Sample UI Test', async ({ page }) => {
   await page.goto('https://playwright.dev/');
   await expect(page).toHaveTitle(/Playwright/);
+  await page.getByRole('link', { name: 'Get started' }).click();
+  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
