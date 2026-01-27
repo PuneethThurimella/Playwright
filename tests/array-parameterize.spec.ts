@@ -7,7 +7,7 @@ const members = [
 ];
 
 members.forEach(({ name, expected }) => {
-  test(`testing with ${name}`, async ({ page }) => {
+  test(`testing with ${name}`, { tag: ['@smoke', '@regression'] }, async ({ page }) => {
     await page.goto(`https://httpbin.org/get?name=${name}`);
     await expect(page.locator("body")).toContainText(expected);
   });

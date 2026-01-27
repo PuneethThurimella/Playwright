@@ -15,7 +15,7 @@ const records: TestData[] = parse(fs.readFileSync(path.join('resources', 'input.
 });
 
 for (const record of records) {
-  test(`foo: ${record.test_case}`, async ({ page }) => {
+  test(`Test: ${record.test_case}`, { tag: ['@smoke', '@regression'] }, async ({ page }) => {
     console.log(record.test_case, record.some_value, record.some_other_value);
   });
 }
