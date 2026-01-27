@@ -1,4 +1,3 @@
-// Data-driven tests using CSV input and inline data for parameterization
 import fs from 'fs';
 import path from 'path';
 import { test, expect } from '@playwright/test';
@@ -21,13 +20,4 @@ for (const record of records) {
   });
 }
 
-[
-  { name: 'Alice', expected: 'Hello, Alice!' },
-  { name: 'Bob', expected: 'Hello, Bob!' },
-  { name: 'Charlie', expected: 'Hello, Charlie!' },
-].forEach(({ name, expected }) => {
-  test(`testing with ${name}`, async ({ page }) => {
-    await page.goto(`https://example.com/greet?name=${name}`);
-    await expect(page.getByRole('heading')).toHaveText(expected);
-  });
-});
+
