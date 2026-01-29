@@ -11,3 +11,14 @@ test('Handle two windows or tabs', { tag: ['@smoke', '@regression'] }, async ({p
     await newPage.waitForLoadState();
     await expect(newPage).toHaveTitle(/microsoft/);
 });
+
+test('multiple tabs', async ({ browser }) => {
+  const context = await browser.newContext();
+  const page1 = await context.newPage();
+  await page1.goto('https://playwright.dev/');
+
+  const page2 = await context.newPage();
+  await page2.goto('https://google.com');
+  await page1.bringToFront();
+  await page2.close();
+});
