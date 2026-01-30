@@ -37,5 +37,32 @@ test('save auth state', async ({ page }) => {
   await page.context().storageState({ path: 'admin.json' });
 });
 
+test('mock api users response', async ({ page }) => {
+  await page.route('**/api/users', async (route) => {
+    await route.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify([{ "name": "John" }]),
+      status: 200
+    });
+  });
+  await page.goto('https://your-app-url.com');
+  await expect(page.locator('text=John')).toBeVisible();
+});
+
+test('wait for loader', async ({ page }) => {
+  await page.goto('https://example.com');
+  await page.getByRole('button', { name: 'Search' }).click();
+  await expect(page.locator('#loader')).toBeHidden();
+  await expect(page.getByText('Results loaded')).toBeVisible();
+});
+
+test('save profile', async ({ page }) => {
+  await page.goto('https://example.com');
+  const [response] = await Promise.all([
+    page.waitForResponse(res => res.url().includes('/api/profile')),
+    page.getByRole('button', { name: 'Save' }).click()
+  ]);
+  expect(response.status()).toBe(200);
+});
 
 

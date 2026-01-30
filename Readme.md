@@ -5,4 +5,5 @@
 - [Sample UI/API Test](./tests/api-testing.spec.ts)
 - [Handle Multiple Tabs Test](./tests/handle-multiple-tabs.spec.ts)
 - [Hybrid Test Case](./tests/hybrid.spec.ts)
+- [Common Test Case](./tests/common.spec.ts)
 -----
