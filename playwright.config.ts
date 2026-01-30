@@ -16,7 +16,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     video:'off',
     screenshot:'off',
-    headless: false,
+    headless: true,
     actionTimeout: 5 * 60 * 1000
   },
   projects: [
