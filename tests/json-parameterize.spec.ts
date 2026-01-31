@@ -1,7 +1,7 @@
-import fs from 'fs';
-import path from 'path';
-import { test, expect } from '@playwright/test';
-import { parse } from 'csv-parse/sync';
+import * as fs from 'fs';
+import * as path from 'path';
+import { test } from '@playwright/test';
+// import records from '../resources/input.json'; 
 
 type TestData = {
   test_case: string;
