@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/fixture';
+import { test, expect } from '../pages/fixture';
 
 test('Handle two windows or tabs', { tag: ['@smoke', '@regression'] }, async ({page, loginPage }) => {
     await page.goto('https://playwright.dev/');
