@@ -6,4 +6,5 @@
 - [Hybrid Test Case](./example/hybrid.spec.ts)
 - [JSON Parameterize Test](./example/json-parameterize.spec.ts)
 - [CSV Parameterize Test](./example/csv-parameterize.spec.ts)
+- [SQL Queries](./example/example.sql)
 -----
