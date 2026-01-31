@@ -13,9 +13,14 @@ test("API Test", { tag: ['@smoke', '@regression'] }, async ({ request }) => {
   console.log(body.json);
 });
 
-test('Sample UI Test', { tag: ['@smoke', '@regression'] }, async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-  await expect(page).toHaveTitle(/Playwright/);
-  await page.getByRole('link', { name: 'Get started' }).click();
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+test('mock api users response', async ({ page }) => {
+  await page.route('**/api/users', async (route) => {
+    await route.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify([{ "name": "John" }]),
+      status: 200
+    });
+  });
+  await page.goto('https://your-app-url.com');
+  await expect(page.locator('text=John')).toBeVisible();
 });
