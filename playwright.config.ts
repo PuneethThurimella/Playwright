@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: './',
   fullyParallel: true,
   globalTimeout: 60 * 60 * 1000,
   timeout: 5 * 60 * 1000,
@@ -32,7 +32,7 @@ export default defineConfig({
     {
       name: 'Playwright Testing',
       use: { ...devices['Desktop Chrome'] },
-      dependencies: ['setup'],
+      // dependencies: ['setup'],
     },
   ],
 });
