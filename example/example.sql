@@ -48,7 +48,20 @@ UPDATE employees SET salary = 80000 WHERE id = 1;
 --Update multiple columns
 UPDATE employees SET department = 'Product', salary = 82000 WHERE name = 'John Doe';
 
+-- Delete a single row (by condition)
+DELETE FROM employees WHERE id = 1;
 
+-- Delete multiple rows (by condition)
+DELETE FROM employees WHERE department = 'HR';
+
+-- Delete using values from another table (subquery)
+DELETE FROM employees WHERE id IN (SELECT id FROM archived_employees);
+
+-- Delete all rows from a table (keeps table structure)
+DELETE FROM employees;
+
+-- Faster way to remove all rows (cannot be rolled back in most DBs)
+TRUNCATE TABLE employees;
 
 
 
