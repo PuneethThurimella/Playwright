@@ -4,8 +4,6 @@ test("Wipro", async ({ page }) => {
   await page.goto("https://trytestingthis.netlify.app/");
   await page.getByRole('textbox', { name: 'First name:' }).click();
   await page.getByRole('textbox', { name: 'First name:' }).fill('Puneeth'); 
-  await page.getByRole('textbox', { name: 'Last name:' }).click();
-  await page.getByRole('textbox', { name: 'Last name:' }).fill('Thurimella');
   await page.getByRole('radio', { name: 'Male', exact: true }).check();
   await page.getByLabel('Choose an option:').selectOption('option 2');
   await page.locator('input[name="option2"]').check();
