@@ -14,12 +14,10 @@ SELECT DeptId, COUNT(*) AS EmployeeCount FROM Employee
 GROUP BY DeptId HAVING COUNT(*) > 5;
 
 --Find highest salary in each department.
-SELECT DeptId, MAX(Salary) AS MaxSalary
-FROM Employee GROUP BY DeptId;
+SELECT DeptId, MAX(Salary) AS MaxSalary FROM Employee GROUP BY DeptId;
 
 --Get duplicate employee records based on email.
-SELECT Email, COUNT(*) AS DuplicateCount
-FROM Employee GROUP BY Email HAVING COUNT(*) > 1;
+SELECT Email, COUNT(*) AS DuplicateCount FROM Employee GROUP BY Email HAVING COUNT(*) > 1;
 
 --Get employees hired in last 1 year.
 SELECT * FROM Employee WHERE HireDate >= DATEADD(YEAR, -1, GETDATE());
@@ -31,8 +29,7 @@ SELECT * FROM Employee WHERE HireDate IN (
 );
 
 --Insert a single row
-INSERT INTO employees (id, name, department, salary)
-VALUES (1, 'John Doe', 'Engineering', 75000);
+INSERT INTO employees (id, name, department, salary) VALUES (1, 'John Doe', 'Engineering', 75000);
 
 --Insert multiple rows
 INSERT INTO employees (id, name, department, salary)

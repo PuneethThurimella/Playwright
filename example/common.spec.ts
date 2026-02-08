@@ -53,4 +53,17 @@ test('save profile', async ({ page }) => {
   expect(response.status()).toBe(200);
 });
 
+test('Tricky', async ({page}) => {
+  // hidden web elements locators
+  await page.waitForSelector('#hiddenElement', { state: 'attached' });
+  await page.click('#hiddenButton', { force: true });
+
+  page.locator('[id^="user_"]');     // starts with
+  page.locator('[id*="login"]');    // contains
+  page.locator('[class$="active"]');// ends with
+
+
+
+})
+
 

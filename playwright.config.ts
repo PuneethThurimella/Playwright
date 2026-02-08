@@ -20,17 +20,17 @@ export default defineConfig({
     actionTimeout: 5 * 60 * 1000
   },
   projects: [
+    // {
+    //   name: 'setup',
+    //   testMatch: /global\.setup\.ts/,
+    //   teardown: 'cleanup',
+    // },
+    // {
+    //   name: 'cleanup',
+    //   testMatch: /global\.teardown\.ts/,
+    // },
     {
-      name: 'setup',
-      testMatch: /global\.setup\.ts/,
-      teardown: 'cleanup',
-    },
-    {
-      name: 'cleanup',
-      testMatch: /global\.teardown\.ts/,
-    },
-    {
-      name: 'Playwright Testing',
+      name: 'Playwright Chromium',
       use: { ...devices['Desktop Chrome'] },
       // dependencies: ['setup'],
     },
