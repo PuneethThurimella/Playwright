@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 
 test("yatra", { tag: ["@smoke"] }, async ({ page }) => {
   const departureDate = getAriaDate(1);

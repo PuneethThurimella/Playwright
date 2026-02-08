@@ -11,13 +11,9 @@ export class LoginPage {
     this.loginbtn = this.page.getByRole("button", { name: "Login" });
   }
 
-  // async goto() {
-  //     await this.page.goto('https://www.amazon.in');
-  // }
-
-  async login(user: string, pass: string) {
-    await this.usernameinput.fill(user);
-    await this.userpasswordinput.fill(pass);
+  async login(username: string, password: string) {
+    await this.usernameinput.fill(username);
+    await this.userpasswordinput.fill(password);
     await this.loginbtn.click();
   }
 }

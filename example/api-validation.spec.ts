@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("Hybrid Test Case", async ({ page }) => {
+test("Network interception / Network validation in UI", async ({ page }) => {
   await page.goto("https://github.com/microsoft/playwright");
   await expect(page).toHaveTitle(/microsoft/i);
   const apiPromise = page.waitForResponse((res) => res.url().includes("main") 

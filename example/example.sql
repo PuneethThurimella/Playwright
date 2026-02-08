@@ -24,9 +24,7 @@ SELECT * FROM Employee WHERE HireDate >= DATEADD(YEAR, -1, GETDATE());
 
 --Fetch first and last employee based on hire date.
 SELECT * FROM Employee WHERE HireDate IN (
-    (SELECT MIN(HireDate) FROM Employee),
-    (SELECT MAX(HireDate) FROM Employee)
-);
+    (SELECT MIN(HireDate) FROM Employee),(SELECT MAX(HireDate) FROM Employee) );
 
 --Insert a single row
 INSERT INTO employees (id, name, department, salary) VALUES (1, 'John Doe', 'Engineering', 75000);
