@@ -22,3 +22,17 @@ test('multiple tabs', async ({ browser }) => {
   await page1.bringToFront();
   await page2.close();
 });
+
+test('Screenshot every alternate tab', async ({ browser }) => {
+  const context = await browser.newContext();
+  const pages = context.pages();
+
+  for (let i = 1; i < pages.length; i += 2) {
+    await pages[i].bringToFront();
+    await pages[i].screenshot({
+      path: `alternate_tab_${i + 1}.png`,
+      fullPage: true
+    });
+  }
+});
+
