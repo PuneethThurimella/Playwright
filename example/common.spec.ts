@@ -40,8 +40,6 @@ test('Tricky', async ({page}) => {
   await page.getByRole('combobox').click();
   await page.getByPlaceholder('Search city').fill('Hyd');
   await page.getByRole('option', { name: /hyd/i }).click();
-
-
 })
 
 
