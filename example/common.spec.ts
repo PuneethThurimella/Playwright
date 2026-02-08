@@ -30,11 +30,18 @@ test('save auth state', async ({ page }) => {
 test('Tricky', async ({page}) => {
   // hidden web elements locators
   await page.waitForSelector('#hiddenElement', { state: 'attached' });
+  await expect(page.locator('#hiddenDiv')).toBeHidden();
   await page.click('#hiddenButton', { force: true });
-
+  // prefer data-test-id or accessibility attributes
   page.locator('[id^="user_"]');     // starts with
   page.locator('[id*="login"]');    // contains
   page.locator('[class$="active"]');// ends with
+  // I trigger the dropdown, wait for options to load, and select values using visible text or accessibility roles instead of indexes or dynamic IDs.
+  await page.getByRole('combobox').click();
+  await page.getByPlaceholder('Search city').fill('Hyd');
+  await page.getByRole('option', { name: /hyd/i }).click();
+
+
 })
 
 
