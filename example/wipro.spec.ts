@@ -20,20 +20,11 @@ test("Wipro", async ({ page }) => {
   console.log(firstNames);
   console.log(lastNames);
   await page.locator("#drag1").dragTo(page.locator("#div1"));
-  await page.pause();
-  // await page.getByRole('textbox', { name: 'Username:' }).click();
-  // await page.getByRole('textbox', { name: 'Username:' }).fill('Puneeth');
-  // await page.getByRole('textbox', { name: 'Password:' }).click();
-  // await page.getByRole('textbox', { name: 'Password:' }).fill('Password');
-  // page.once('dialog', dialog => {
-  //   console.log(`Dialog message: ${dialog.message()}`);
-  //   dialog.dismiss().catch(() => {});
-  // });
-  // await page.getByRole('button', { name: 'Login' }).click();
- 
-
-  // const page1Promise = page.waitForEvent('popup');
-  // await page.getByRole('button', { name: 'Submit' }).click();
-  // const page1 = await page1Promise;
-  // await page.pause();
+  page.once('dialog', dialog => {
+    console.log(`Dialog message: ${dialog.message()}`);
+    dialog.dismiss().catch(() => {});
+  });
+  const page1Promise = page.waitForEvent('popup');
+  await page.getByRole('button', { name: 'Submit' }).click();
+  const page1 = await page1Promise;
 });
