@@ -1,12 +1,12 @@
 [{
-    "test_case": "value 1",
-    "some_value": "value 11",
-    "some_other_value": "foobar1",
-    "commnet": "When you have multiple records, they must be wrapped inside an array"
+    "Id": "1",
+    "firstName": "Puneeth",
+    "lastName": "Thurimella",
+    "comment": "When you have multiple records, they must be wrapped inside an array"
 },
 {
-    "test_case": "value 2",
-    "some_value": "value 22",
-    "some_other_value": "foobar22",
-    "commnet": "When you have multiple records, they must be wrapped inside an array"
+    "Id": "2",
+    "firstName": "Raj",
+    "lastName": "Kumar",
+    "comment": "When you have multiple records, they must be wrapped inside an array"
 }]
