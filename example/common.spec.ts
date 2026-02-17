@@ -8,6 +8,18 @@ test('Common Tricky', async ({ page }) => {
 
 });
 
+test('Attach screenshot in middle of test', async ({ page }) => {
+  await page.goto('https://example.com');
+  await page.getByText('More information').click();
+  const screenshot = await page.screenshot();
+  await test.info().attach('After Clicking More Information', {
+    body: screenshot,
+    contentType: 'image/png',
+  });
+  await expect(page).toHaveURL(/example/);
+});
+
+
 test.use({ storageState: 'admin.json' });
 test('admin dashboard', async ({ page }) => {
   await page.goto('https://example.com/dashboard');
