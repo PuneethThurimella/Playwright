@@ -18,9 +18,9 @@ members.forEach(({ name, expected }) => {
 });
 
 type TestData = {
-  test_case: string;
-  some_value: string;
-  some_other_value: string;
+  id: string;
+  firstName: string;
+  lastName: string;
 }
 
 const csvRecords: TestData[] = parse(fs.readFileSync(path.join('resources', 'input.csv')), {
@@ -29,8 +29,8 @@ const csvRecords: TestData[] = parse(fs.readFileSync(path.join('resources', 'inp
 });
 
 for (const record of csvRecords) {
-  test(`CSV Test: ${record.test_case}`, { tag: ['@smoke', '@regression'] }, async ({ page }) => {
-    console.log(record.test_case, record.some_value, record.some_other_value);
+  test(`CSV Test: ${record.firstName}`, { tag: ['@smoke', '@regression'] }, async ({ page }) => {
+    console.log(record.id, record.firstName, record.lastName);
   });
 }
 
@@ -38,7 +38,7 @@ for (const record of csvRecords) {
 const jsonRecords: TestData[] = JSON.parse(fs.readFileSync(path.join('resources', 'input.json'),"utf8"));
 
 for (const record of jsonRecords) {
-  test(`JSON Test: ${record.test_case}`, async ({ page }) => {
-    console.log(record.test_case, record.some_value, record.some_other_value);
+  test(`JSON Test: ${record.firstName}`, async ({ page }) => {
+    console.log(record.id, record.firstName, record.lastName);
   });
 }
